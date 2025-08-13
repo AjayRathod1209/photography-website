@@ -362,10 +362,44 @@
 <script>
   AOS.init({ once: true });
 </script>
+  <!-- Floating AI Chatbot Button with Tooltip -->
+<div class="fixed bottom-6 right-6 group">
+    <!-- Tooltip: appears when the button is hovered -->
+    <span class="absolute bottom-16 right-0 mb-1 px-3 py-1 text-sm text-white bg-gray-700 rounded-md opacity-0 group-hover:opacity-100 transition duration-300">
+      Tripverse AI Chatbot
+    </span>
+    
+    <!-- AI Chatbot Button with Robot SVG -->
+    <button
+      id="chatbot-toggle"
+      onclick="toggleChatbot()"
+      class="bg-yellow-500 text-white p-4 rounded-full shadow-lg z-50 animate-pulse hover:animate-none hover:bg-yellow-600 transition duration-300 focus:outline-none"
+      aria-label="Open AI Chatbot"
+    >
+      <!-- Robot SVG Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+        stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 18v1.5a1.5 1.5 0 003 0V18m5.25-10.5H18a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0118 16.5H6a2.25 2.25 0 01-2.25-2.25v-4.5A2.25 2.25 0 016 7.5h.75M12 6V3m-6 6h.008v.008H6V9zm12 0h.008v.008H18V9z" />
+      </svg>
+    </button>
+  </div>
+  
+  
+  <!-- Chatbot Container -->
+  <div id="chatbot" class="hidden fixed bottom-20 right-6 bg-white border border-gray-300 rounded-lg shadow-lg w-80 max-h-[500px] flex flex-col z-50">
+    <div class="bg-yellow-500 text-white text-center py-2 font-semibold rounded-t">Tripverse AI Chatbot</div>
+    <div id="chat-messages" class="flex-1 p-3 overflow-y-auto text-sm space-y-2"></div>
+    <div class="p-2 flex items-center border-t border-gray-300">
+      <input id="user-input" type="text" class="flex-1 border border-gray-300 rounded px-2 py-1 mr-2 text-sm" placeholder="Ask your travel question..." />
+      <button onclick="sendMessage()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm">Send</button>
+    </div>
+  </div>
 <script src="script.js"></script>
   <script id="omnidimension-web-widget" async src="https://backend.omnidim.io/web_widget.js?secret_key=606dd532b0fe63b5cedbcfc9a6dbad0a" ></script>
 </body>
 </html>
+
 
 
 
