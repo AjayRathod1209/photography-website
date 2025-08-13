@@ -376,18 +376,7 @@
       class="bg-yellow-500 text-white p-4 rounded-full shadow-lg z-50 animate-pulse hover:animate-none hover:bg-yellow-600 transition duration-300 focus:outline-none"
       aria-label="Open AI Chatbot"
     >
-      <!-- Robot SVG Icon -->
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-        stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round"
-          d="M9 18v1.5a1.5 1.5 0 003 0V18m5.25-10.5H18a2.25 2.25 0 012.25 2.25v4.5A2.25 2.25 0 0118 16.5H6a2.25 2.25 0 01-2.25-2.25v-4.5A2.25 2.25 0 016 7.5h.75M12 6V3m-6 6h.008v.008H6V9zm12 0h.008v.008H18V9z" />
-      </svg>
-    </button>
-  </div>
-  
-  
- 
-  <!-- Chatbot Container -->
+     <!-- Floating Chatbot -->
   <div id="chatbot" class="fixed bottom-20 right-6 bg-white border border-gray-300 rounded-lg shadow-lg w-80 max-h-[500px] flex flex-col z-50">
     <div class="bg-yellow-500 text-white text-center py-2 font-semibold rounded-t">📸 Photography Assistant</div>
     <div id="chat-messages" class="flex-1 p-3 overflow-y-auto text-sm space-y-2"></div>
@@ -406,7 +395,7 @@
 
       const chatMessages = document.getElementById("chat-messages");
 
-      // Add user message
+      // Show user message
       chatMessages.innerHTML += `<div class="text-right">
         <span class="bg-yellow-100 text-gray-800 px-3 py-1 rounded inline-block">${message}</span>
       </div>`;
@@ -417,12 +406,15 @@
         const response = await fetch("https://your-backend-url.onrender.com/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message })
+          body: JSON.stringify({
+            message: message,
+            prompt: "You are a helpful AI assistant for a photography studio website. You answer only questions about photography services, portfolio, booking, packages, and photography tips. If someone asks about unrelated topics, politely guide them back to photography services."
+          })
         });
 
         const data = await response.json();
 
-        // Add AI reply
+        // Show AI reply
         chatMessages.innerHTML += `<div>
           <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded inline-block">${data.reply}</span>
         </div>`;
@@ -437,11 +429,9 @@
   <!-- OmniDimension Widget -->
   <script id="omnidimension-web-widget" async src="https://backend.omnidim.io/web_widget.js?secret_key=606dd532b0fe63b5cedbcfc9a6dbad0a"></script>
 
-<script src="script.js"></script>
-  <script id="omnidimension-web-widget" async src="https://backend.omnidim.io/web_widget.js?secret_key=606dd532b0fe63b5cedbcfc9a6dbad0a" ></script>
-
 </body>
 </html>
+
 
 
 
